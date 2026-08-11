@@ -45,26 +45,35 @@ Automatic Failover позволяет автоматически поднима�
 Принцип их работы: **pg_dump** создает "слепок" базы данных на момент запуска, не блокируя её работу.
 
 * для резервирования данных:
-в простой sql-файл\
+в простой sql-файл
+
 >pg_dump -U postgres -h localhost -d mydb > mydb_backup.sql
-в кастомный формат\
+
+в кастомный формат
+
 >pg_dump -U postgres -h localhost -d mydb -Fc -f mydb_backup.dump
 
 <br>
 
 * для восстановления:
-из sql-файла\
+из sql-файла
+
 >psql -U postgres -h localhost -d newdb -f mydb_backup.sql
 
 при этом *newbd* нужно создать заранее
 
-из кастомного дампа\
-в существующую базу\
+из кастомного дампа
+
+в существующую базу
+
 >pg_restore -U postgres -h localhost -d newdb mydb_backup.dump
 
-с созданием базы\
+с созданием базы
+
 >pg_restore -U postgres -h localhost -C -d postgres mydb_backup.dump
-здесь ключ **-С** создаёт новую базу\
+
+здесь ключ **-С** создаёт новую базу
+
 
 ## Задание 3. MySQL
 
